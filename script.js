@@ -1,11 +1,11 @@
 fetch('items.json')
 .then ((response) => response.json())
-.then ((items=>console.log(items)))
+.then ((items=> console.log(items)))
 //trato de ver en consola el contenido de "items" pero me muestra un error, no pasa lo mismo que en el video de la clase, me impide cargar el archivo .json y no puedo hacer el forEach en la linea 26
 
 
 let cart = [] 
-let list = document.getElementById('items')
+let list = document.getElementById('lista')
 let ClearCart = document.getElementById('ClearCart')
 
 
@@ -23,16 +23,19 @@ saveCart()
 })
 
 
-items.forEach((item,i)=>{
-    list.innerHTML += `<li>
-        <div> ${item.name}</div>
-        <div>Precio: $${item.price}</div>
-        <image src="${item.image}" />
-        <input type="number" placeholder="Cantidad" onchange='inputChange(${i}, "${item.name}", "${item.price}", "${item.image}")'/>
-        <button>Agregar al carrito</button>
-    </li>`
-})
+function renderizar (){
+  items.forEach((item)=>{
+      list.innerHTML += `<div>
+          <div> ${item.name}</div>
+          <div>Precio: $${item.price}</div>
+          <image src="${item.image}" />
+          <input type="number" placeholder="Cantidad" onchange='inputChange(${i}, "${item.name}", "${item.price}", "${item.image}")'/>
+          <button>Agregar al carrito</button>
+      </div>`
+  })
+  }
 
+  renderizar()
 
 function renderCart() 
 { 
@@ -94,3 +97,5 @@ fetch('https://jsonplaceholder.typicode.com/posts')
 fetch('items.json')
 .then ((response) => response.json())
 .then ((data=>console.log(data)))
+
+
