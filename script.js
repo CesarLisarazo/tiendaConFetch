@@ -1,19 +1,30 @@
+
+
+
 fetch('items.json')
 .then ((response) => response.json())
-.then ((items=> console.log(items)))
+.then ((items=>items.forEach((items,i)=>{
+  list.innerHTML += `<li>
+      <div> ${items.name}</div>
+      <div>Precio: $${items.price}</div>
+      <image src="${items.image}" />
+      <input type="number" placeholder="Cantidad" onchange='inputChange(${i}, "${items.name}", "${items.price}", "${items.image}")'/>
+      <button>Agregar al carrito</button>
+  </li>`
+}) ))
 
-console.log(items)
+
 
 let cart = [] 
 let list = document.getElementById('lista')
 let ClearCart = document.getElementById('ClearCart')
-
 
 document.addEventListener('DOMContentLoaded',() =>
 {
   cart=JSON.parse(localStorage.getItem('carrito'))  
   renderCart()
 })
+
 
 
 ClearCart.addEventListener('click', ()=> { 
@@ -23,19 +34,10 @@ saveCart()
 })
 
 
-function renderizar (){
-  items.forEach((item)=>{
-      list.innerHTML += `<div>
-          <div> ${item.name}</div>
-          <div>Precio: $${item.price}</div>
-          <image src="${item.image}" />
-          <input type="number" placeholder="Cantidad" onchange='inputChange(${i}, "${item.name}", "${item.price}", "${item.image}")'/>
-          <button>Agregar al carrito</button>
-      </div>`
-  })
-  }
 
-  renderizar()
+
+
+  
 
 function renderCart() 
 { 
@@ -85,17 +87,4 @@ function saveCart()
 {
   localStorage.setItem(`carrito`, JSON.stringify(cart))
 } 
-
-
-//aqui uso .fetch para ver si lo estoy escribiendo correctamente con resultados positivos 
-fetch('https://jsonplaceholder.typicode.com/posts')
-.then ((response) => response.json())
-.then ((info=>console.log( info)))
-
-
-//aqui trato de cargar el archivo .jason local pero la consola dice que el permiso está bloqueado politicas CORS 
-fetch('items.json')
-.then ((response) => response.json())
-.then ((data=>console.log(data)))
-
 
