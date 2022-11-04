@@ -1,8 +1,8 @@
 fetch('items.json')
 .then ((response) => response.json())
 .then ((items=> console.log(items)))
-//trato de ver en consola el contenido de "items" pero me muestra un error, no pasa lo mismo que en el video de la clase, me impide cargar el archivo .json y no puedo hacer el forEach en la linea 26
 
+console.log(items)
 
 let cart = [] 
 let list = document.getElementById('lista')
