@@ -19,18 +19,14 @@ let cart = []
 let list = document.getElementById('lista')
 let ClearCart = document.getElementById('ClearCart')
 
-document.addEventListener('DOMContentLoaded',() =>
-{
-  cart=JSON.parse(localStorage.getItem('carrito'))  
-  renderCart()
-})
+
 
 
 
 ClearCart.addEventListener('click', ()=> { 
 cart.length=[]
 renderCart()
-saveCart()
+
 })
 
 
@@ -79,12 +75,6 @@ else
   image: image
 })        
   renderCart()
-  saveCart()
+
 }}}
-
-
-function saveCart()
-{
-  localStorage.setItem(`carrito`, JSON.stringify(cart))
-} 
 
