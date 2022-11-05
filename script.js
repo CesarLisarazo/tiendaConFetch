@@ -14,17 +14,17 @@ fetch('items.json')
 }) ))
 
 
+cart =  []
 
-let cart = [] 
 let list = document.getElementById('lista')
 let ClearCart = document.getElementById('ClearCart')
 
-
-
+console.log(JSON.parse(localStorage.getItem('cartShop')))
 
 
 ClearCart.addEventListener('click', ()=> { 
 cart.length=[]
+localStorage.removeItem('cartShop')
 renderCart()
 
 })
@@ -73,8 +73,12 @@ else
   name: name,
   price: price,
   image: image
+
 })        
   renderCart()
+
+  localStorage.setItem('cartShop',JSON.stringify(cart))
+
 
 }}}
 
