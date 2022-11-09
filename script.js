@@ -47,11 +47,9 @@ else{
 
 //botón para limpiar el carrito
 ClearCart.addEventListener('click', ()=> { 
-if (cart.length== 0)
-{
-swal(" ", "El carrito ya está vacio", "success");
-}
-else
+
+
+if (cart.length!== 0)
   {
   swal({
   title: "¿Estás seguro?",
@@ -79,20 +77,29 @@ if (willDelete) {
 //Aquí se renderiza el carrito
 function renderCart() 
 { 
-  let cartItems = document.getElementById('carrito')
-  let total = 0; 
-  cartItems.innerHTML = ''
-  cart.forEach((item)=>
-  {
-    total+= item.price * item.quantity
-    cartItems.innerHTML += `<li>
-    <div>${item.name}</div>
-    <div>Cantidad: ${item.quantity}</div>
-    <image src="${item.image}" />
-    <button onclick ='eliminarProducto(${item.id})'> Eliminar</button>
-     </li>`
-  })
-  document.getElementById('total').innerHTML = '$' +total
+        let cartItems = document.getElementById('carrito')
+        let total = 0; 
+        cartItems.innerHTML = ''
+      
+      
+      
+        cart.forEach((item)=>
+      
+
+  
+        {
+          total+= item.price * item.quantity
+          cartItems.innerHTML += `<li>
+          <div>${item.name}</div>
+          <div>Cantidad: ${item.quantity}</div>
+          <image src="${item.image}" />
+          <button onclick ='eliminarProducto(${item.id})'> Eliminar</button>
+          </li>`
+        })
+        document.getElementById('total').innerHTML = '$' +total
+
+
+       
 }
 
 
@@ -136,8 +143,3 @@ function eliminarProducto(id) {
 }
 
 
-
-function existe(){
-console.log(cart)
-
-}
