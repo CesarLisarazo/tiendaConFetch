@@ -22,6 +22,8 @@ let list = document.getElementById('lista')
 let ClearCart = document.getElementById('ClearCart')
 let finalizarCompra = document.getElementById('finalizarCompra')
 
+let newCart =[]
+let listaFiltrada = []
 
 
 //Aquí se carg el contenido del carrito del local storage si es que existe 
@@ -122,14 +124,18 @@ else
    
 })
 
-// aquí por cada click en el botón "agregar al carrito" recibo los valores de cantidad y id del item clickeado, y la informacion del contenido del carrito 
-
-console.log(input.value)
-console.log(cart)
-console.log(id)
 
 
-  renderCart()
+renderCart()
+
+//aquí por cada click en "agregar al carrito se crea un array "newCart" con los id's de cada item clickeado y otro array "listaFiltrada" con los mismos id's sin repetir"
+ 
+  newCart.push(id)
+  console.log(newCart)
+  let listaFiltrada = [... new Set (newCart)]
+  console.log(listaFiltrada)
+
+
   localStorage.setItem('cartShop',JSON.stringify(cart))
 }}}
 
