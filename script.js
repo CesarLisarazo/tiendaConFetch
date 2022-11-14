@@ -1,4 +1,3 @@
-
 //Aquí se cargan los datos del Json y se arman las card
 
 fetch('items.json')
@@ -13,8 +12,8 @@ fetch('items.json')
       <input type="number" placeholder="Cantidad" onchange='inputChange(${i}, "${items.name}", "${items.price}", "${items.image}", "${items.id}")'/>
       <button>Agregar al carrito</button> 
   </li>`
-})))
-
+}
+)))
 
 //Se declaran variables 
 let cart = []
@@ -22,8 +21,7 @@ let list = document.getElementById('lista')
 let ClearCart = document.getElementById('ClearCart')
 let finalizarCompra = document.getElementById('finalizarCompra')
 
-let newCart =[]
-let listaFiltrada = []
+
 
 
 //Aquí se carg el contenido del carrito del local storage si es que existe 
@@ -86,7 +84,8 @@ function renderCart()
      total+= item.price * item.quantity
       cartItems.innerHTML += `<li>
        <div>${item.name}</div>
-       <div>Cantidad: ${item.quantity}</div>
+       <div>Cantiad: ${item.quantity}</div>
+       <div>Sub-total: ${item.quantity*item.price}</div>
       <image src="${item.image}" />
       <button onclick ='eliminarProducto(${item.id})'> Eliminar</button>
       </li>`         
@@ -102,18 +101,18 @@ function inputChange(i, name, price,image,id) {
     let listItem = document.querySelectorAll('li')[i]
     let input = listItem.querySelector('input')
     let button = listItem.querySelector('button')
-
+    
     if(input.value <1)
  {
-  input.value =1
+  
   swal(" ", "Debes agregar al menos 1", "error");
+  input.value =""
  }
 
 else
 {
   button.onclick = function(){
  
-  cart.innerHTML = ''
   
   cart.push({
   quantity: input.value,
@@ -123,17 +122,11 @@ else
   id:id,
    
 })
-
-
-
 renderCart()
 
-//aquí por cada click en "agregar al carrito se crea un array "newCart" con los id's de cada item clickeado y otro array "listaFiltrada" con los mismos id's sin repetir"
- 
-  newCart.push(id)
-  console.log(newCart)
-  let listaFiltrada = [... new Set (newCart)]
-  console.log(listaFiltrada)
+
+
+
 
 
   localStorage.setItem('cartShop',JSON.stringify(cart))
