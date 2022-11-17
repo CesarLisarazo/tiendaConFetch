@@ -126,10 +126,13 @@ else
    
 })
 renderCart()
+
+//Aqui veo en consola el ID del producto cliqueado y el cart 
+
+console.log(cart)
 console.log(id)
 
-
-  localStorage.setItem('cartShop',JSON.stringify(cart))
+localStorage.setItem('cartShop',JSON.stringify(cart))
 }
 
 
