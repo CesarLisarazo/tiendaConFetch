@@ -86,7 +86,7 @@ function renderCart() {
     cartItems.innerHTML += `<li>
        <div>${item.name}</div>
        <div>Cantidad: ${item.quantity}</div>
-       <div>Sub-total: ${item.quantity * item.price}</div>
+       <div>Sub-total: $${item.quantity * item.price}</div>
       <image src="${item.image}" />
 
       </li>`
