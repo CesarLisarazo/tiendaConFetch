@@ -10,7 +10,7 @@ fetch('items.json')
       <div>Precio: $${items.price}</div>
       <image src="${items.image}" />
       <input type="number" placeholder="cantidad" onchange='inputChange(${i}, "${items.name}", "${items.price}", "${items.image}", "${items.id}")'/> <br>
-      <button>Agregar al carrito</button> <br>
+      <button>Agregar al carrito</button>
       <button onclick ='eliminarProducto(${items.id})'> Eliminar orden</button>
   </li>`
   }
